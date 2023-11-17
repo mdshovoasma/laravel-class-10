@@ -101,19 +101,42 @@
 							<div class="collapse navbar-collapse flex-grow-1">
 								<!-- menus -->
 								<ul class="navbar-nav">
-									<li class="nav-item dropdown active">
-										<a class="nav-link dropdown-toggle" href="index.html">Home</a>
+									
+									<li class="nav-item  {{Route::is('home')?'active':'no'}}">
+										<a class="nav-link" href="category.html">Home</a>
+									</li>
+
+									@foreach ($categores as $category)
+									<li class="nav-item dropdown ">
+										<a class="nav-link {{count($category->subcategories) > 0 ? 'dropdown-toggle':'' }}" href="index.html">{{$category->title}}</a>
 										<ul class="dropdown-menu">
-											<li><a class="dropdown-item" href="index.html">Magazine</a></li>
+
+											@foreach ($category->subcategories as $subcategpory)
+
+											@if (count($category->subcategories)>0)
+											<li><a class="dropdown-item" href="index.html">{{ $subcategpory->title}}</a></li>
+											@endif
+											
+											@endforeach
+
+											{{-- <li><a class="dropdown-item" href="index.html">Magazine</a></li>
 											<li><a class="dropdown-item" href="personal.html">Personal</a></li>
 											<li><a class="dropdown-item" href="personal-alt.html">Personal Alt</a></li>
 											<li><a class="dropdown-item" href="minimal.html">Minimal</a></li>
-											<li><a class="dropdown-item" href="classic.html">Classic</a></li>
+											<li><a class="dropdown-item" href="classic.html">Classic</a></li> --}}
 										</ul>
 									</li>
-									<li class="nav-item">
-										<a class="nav-link" href="category.html">Lifestyle</a>
-									</li>
+										
+									@endforeach
+
+									
+
+
+
+
+
+
+{{-- 									
 									<li class="nav-item">
 										<a class="nav-link" href="category.html">Inspiration</a>
 									</li>
@@ -129,7 +152,7 @@
 									</li>
 									<li class="nav-item">
 										<a class="nav-link" href="contact.html">Contact</a>
-									</li>
+									</li> --}}
 									{{-- for gust --}}
 									@guest
 									<li class="nav-item">

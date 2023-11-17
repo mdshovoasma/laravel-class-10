@@ -65,7 +65,7 @@ class FrofileController extends Controller
     // password update
     function passwordupdatte(Request $request){
         $request->validate([
-            'old' => 'required|current_password',//current_password ata dea data base ar old password chak kora jai
+            'old' => 'required|current_password',//current_password ata dea database ar old password chak kora jai
             'password' =>  'required|min:8|confirmed|different:old',
             'password_confirmation'=>'required',
 
